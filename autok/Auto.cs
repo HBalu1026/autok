@@ -32,5 +32,17 @@ namespace autok
         public string Márka { get => márka; }
         public string Modell { get => modell; }
         public string Szín { get => szín; }
+
+        public static List<Auto> BeolvasFajlbol(string fajlNev)
+        {
+            List<Auto> autok = new List<Auto>();
+            string[] sorok = File.ReadAllLines(fajlNev);
+
+            for (int i = 1; i < sorok.Length; i++)
+            {
+                autok.Add(new Auto(sorok[i]));
+            }
+            return autok;
+        }
     }
 }
